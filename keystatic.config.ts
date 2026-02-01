@@ -1,10 +1,12 @@
 
 import { config, fields, collection } from '@keystatic/core';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 export default config({
-    storage: {
-        kind: 'local',
-    },
+    storage: isDev
+        ? { kind: 'local' }
+        : { kind: 'github', repo: 'Deyan2505/crimson-gravity' },
     collections: {
         posts: collection({
             label: 'Blog Posts',
